@@ -1,0 +1,23 @@
+{
+  "name": "nodeserverstudy",
+  "version": "1.0.0",
+  "description": ">介绍 node.js可以看作运行在服务端的JavaScript.\r Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mrlyk/NodeServerStudy.git"
+  },
+  "author": "Mrlyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mrlyk/NodeServerStudy/issues"
+  },
+  "homepage": "https://github.com/Mrlyk/NodeServerStudy#readme",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
