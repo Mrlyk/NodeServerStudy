@@ -5,4 +5,4 @@ http.createServer(function (request,response) {
   response.end('hello world')
 }).listen('66')
 
-console.log('Server running at http://127.0.0.1:8888/');
+console.log('Server running at http://127.0.0.1:66/');
