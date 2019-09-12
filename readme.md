@@ -20,7 +20,7 @@ Node.js的一些特性:
 >[PM2官方文档](https://pm2.keymetrics.io/)  
 
 linux服务器目录说明:  
-![说明](/nodeSeverBasic/imgeSeverBasic/img/linuxContent.png)
+![说明](/nodeSeverBasic/img/linuxContent.png)
 
 #### 二.Node.js常用功能介绍  
 ##### 1.事件驱动程序(类似vue的$emit和$on来监听事件)  
@@ -149,7 +149,7 @@ readerStream.pipe(writerStream);
 >Nodejs的模块是CommonJs规范的一种实现,使用require导入,module.exports = xxx(或直接exports = xxx)导出
 
 require时模块的获取路径:  
-![require图示](/nodeSeverBasic/imgeSeverBasic/img/require图示.png)
+![require图示](/nodeSeverBasic/img/require图示.png)
 
 ##### *5.路由与请求参数获取*  
 获取参数需要用到两个额外的模块 url 和 queryString
