@@ -23,7 +23,7 @@ function start(route){
     // var body = ''
     // request.on('data',(chunk) => {
     //   console.log(`chunk:${chunk}`)
-    //   body += chunk
+    //   body += chunk  //chunk就是post请求体中的数据
     // })
 
     // request.on('end',()=>{
