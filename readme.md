@@ -22,6 +22,16 @@ Node.js的一些特性:
 linux服务器目录说明:  
 ![说明](/nodeSeverBasic/img/linuxContent.png)
 
+4.linux安装mongoDB数据库  
+使用yum进行安装,安装前配置yum工具的mongoDB安装命令  
+在阿里服务器配置上开放默认的端口  
+```
+// mongoDB的具体操作方法查看文档
+// 给要用的数据库添加一个拥有读写权限的哦那过户
+db.createUser({user:'user',pwd:'pwd',{roles:[role:'readWrite',db:'db']}})
+
+```
+
 #### 二.Node.js常用功能介绍  
 ##### 1.事件驱动程序(类似vue的$emit和$on来监听事件)  
 >events 模块只提供了一个对象： events.EventEmitter。EventEmitter 的核心就是事件触发与事件监听器功能的封装。
