@@ -3,12 +3,14 @@ const express = require('express')
 const app = express()
 const indexRouter = require('./routes/index')
 const userRouter = require('./routes/user')
+const errorRouter = require('./routes/error')
 
 app.set('views',path.join(__dirname,'views'))
 app.set('view engine','ejs')
 
 app.use('/',indexRouter)
 app.use('/name',userRouter)
+app.use('/error',errorRouter)
 
 /*
 app.get('/',function (req,res) {
