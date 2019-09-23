@@ -83,3 +83,39 @@ Hello , <%= name %>
 <br>
 <%- include('./footer') %>
 ```
+
+#### 五.中间件  
+>express的中间件(middleware)就是用来处理请求的,通过app.use的回调函数中的next()方法调用.
+如果没有调用则不会传递给下一个中间件.
+
+express有很多其他用户封装好的非常有效的中间件,开发时可以去各npm发布网站上查找
+
+```
+// 示例:
+const express = require('express')
+const app = new express()
+
+app.use(function(req, res, next){
+  console.log(1)
+  next()   // 也可以抛出一个错误,中止请求 next(new Error('错误'))
+})
+
+app.use(function(req, res, next){
+  console.log(2)
+  res.status(200).end()  //res.status设置返回的状态吗,还可以设置很多其他东西,如请求头.JSONP状态码,cookie等
+})
+
+// 错误处理,如果上面的中间件出现了错误,会在这个方法里进行处理,需要err参数
+app.use(function (err,req,res,next) {
+  console.log('err是:'+err)
+  res.status(500).send('处理了错误')
+})
+
+app.listen(80)
+```
+*注意:*
+- express@4 之前的版本基于 connect 这个模块实现的中间件的架构，express@4 及以上的版本则移除了对 connect 的依赖自己实现了.
+理论上基于 connect 的中间件（通常以 connect- 开头，如 connect-mongo）仍可结合 express 使用。
+
+- 中间件的加载顺序很重要！比如：通常把日志中间件放到比较靠前的位置，后面将会介绍的 connect-flash 中间件是基于 session 的.
+所以需要在 express-session 后加载。
