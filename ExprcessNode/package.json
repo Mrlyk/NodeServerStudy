@@ -10,13 +10,8 @@
   "author": "Mrlyk",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "ejs": "^2.7.1",
-    "express": "^4.17.1"
-=======
     "express": "^4.17.1",
     "ejs": "^2.7.1"
->>>>>>> origin/master
   },
   "devDependencies": {
     "supervisor": "^0.12.0"
