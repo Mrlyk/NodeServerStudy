@@ -31,7 +31,7 @@ app.use('/name',userRouter)
 const express = require('express')
 const router = express.Router()
 
-router.get('/:name',function (req,res) {
+router.get('/:name',function (req,res) {   // 路由可以有多个回调函数 router.get('path',callback[,callback])
   let name = req.params.name
   res.send(`Hello ${name}`)
 })

@@ -25,8 +25,16 @@
 15. eslint 代码风格格式化工具 (eslint --init生成初始化文件)
 
 #### 项目配置:  
-config-lite : 读取并合并配置文件  
+1.config-lite : 读取并合并配置文件  
 >如果程序以 NODE_ENV=test node app 启动，则 config-lite 会依次降级查找 config/test.js、config/test.json、config/test.node、config/test.yml、config/test.yaml 并合并 default 配置; 
 如果程序以 NODE_ENV=production node app 启动，则 config-lite 会依次降级查找 config/production.js、config/production.json、config/production.node、config/production.yml、config/production.yaml 并合并 default 配置。
 
-config-lite 还支持冒泡查找配置，即从传入的路径开始，从该目录不断往上一级目录查找 config 目录，直到找到或者到达根目录为止。
+config-lite 还支持冒泡查找配置，即从传入的路径开始，从该目录不断往上一级目录查找 config 目录，直到找到或者到达根目录为止。  
+
+2.connect-flash  
+>connect-flash 是基于 session 实现的，它的原理很简单：设置初始值 req.session.flash={}，通过 req.flash(name, value) 设置这个对象下的字段和值，通过 req.flash(name) 获取这个对象下的值，同时删除这个字段，实现了只显示一次刷新后消失的功能。
+
+*express-session、connect-mongo 和 connect-flash 的区别与联系:*
+- express-session: 会话（session）支持中间件
+- connect-mongo: 将 session 存储于 mongodb，需结合 express-session 使用，我们也可以将 session 存储于 redis，如 connect-redis
+- connect-flash: 基于 session 实现的用于通知功能的中间件，需结合 express-session 使用
