@@ -14,7 +14,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 // 设置静态文件目录
-app.use(express.static(__dirname, 'public'))
+app.use(express.static(path.join(__dirname, 'public')))
 // session 中间件
 app.use(session({
   name: config.session.key,
@@ -25,7 +25,7 @@ app.use(session({
     maxAge: config.session.maxAge
   },
   store: new MongoStore({
-    url: config.mongodb
+    url: config.mongodb.url
   })
 }))
 

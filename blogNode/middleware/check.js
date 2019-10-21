@@ -11,6 +11,7 @@ module.exports = {
       req.flash('error', '已登录')
       return res.redirect('back')
     }
+    next()
   }
 
 }
