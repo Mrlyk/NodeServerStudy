@@ -32,6 +32,12 @@ app.use(session({
 // flash中间件用来显示通知
 app.use(flash())
 
+// 处理表单及文件上传的中间件
+app.use(require('express-formidable')({
+  uploadDir: path.join(__dirname, 'public/img'), // 上传文件目录
+  keepExtensions: true// 保留后缀
+}))
+
 // 设置模板全局常量
 app.locals.blog = {
   title: pkg.name,
@@ -50,4 +56,5 @@ routes(app)
 
 app.listen(config.port, function () {
   console.log(`${pkg.name} listening on port ${config.port}`)
+  console.log('http://localhost:3000')
 })
