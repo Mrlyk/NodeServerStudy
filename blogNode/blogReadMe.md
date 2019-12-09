@@ -9,7 +9,7 @@
 
 **所需模块:**  
 1. express: web 框架
-2. express-session: session 中间件
+2. express-session: session 中间件(服务器上的session)
 3. connect-mongo: 将 session 存储于 mongodb，结合 express-session 使用
 4. connect-flash: 页面通知的中间件，基于 session 实现
 5. ejs: 模板

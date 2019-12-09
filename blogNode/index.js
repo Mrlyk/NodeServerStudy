@@ -38,13 +38,14 @@ app.use(require('express-formidable')({
   keepExtensions: true// 保留后缀
 }))
 
-// 设置模板全局常量
+// 模板渲染时,express会按照res.render > app.locals > res.locals 优先级将变量传入模板
+// 设置模板全局常量,express在渲染时会merge该常量
 app.locals.blog = {
   title: pkg.name,
   description: pkg.description
 }
 
-// 添加模板必需的三个变量
+// 添加模板必需的三个变量,express在渲染时会merge该变量
 app.use(function (req, res, next) {
   res.locals.user = req.session.user
   res.locals.success = req.flash('success').toString()

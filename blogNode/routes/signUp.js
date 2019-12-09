@@ -42,7 +42,12 @@ router.post('/', checkNotLogin, function (req, res, next) {
   } catch (e) {
     // 注册失败，异步删除上传的头像
     if (req.files.avatar) {
-      fs.unlink(req.files.avatar.path)
+      // fs.unlink方法只能用来删除文件不能删除文件夹,且回调函数是必须的
+      fs.unlink(req.files.avatar.path, (err) => {
+        if (err) {
+          console.log(err)
+        }
+      })
     }
     req.flash('error', e.message)
     return res.redirect('/signup')
@@ -64,7 +69,7 @@ router.post('/', checkNotLogin, function (req, res, next) {
       function (result) {
       // 此 user 是插入 mongodb 后的值，包含 _id
         user = result.ops[0]
-        // 删除密码这种敏感信息，将用户信息存入 session
+        // 删除密码这种敏感信息，将用户信息存入 session,这里的session是指存在服务器的session和前端的sessionStorage不是一个东西
         delete user.password
         req.session.user = user
         // 写入 flash
