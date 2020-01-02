@@ -33,6 +33,7 @@ module.exports = {
     if (author) {
       query.author = author
     }
+    // 踩坑:查询报错查看插件方法(addCreatedAt,contentToHtml)有没有写错,不一定是查询本身错误.
     return Post.find({ author: '5dee1ec86de3081e28020d33' }).populate({ path: 'author', model: 'User' }).sort({ _id: -1 }).addCreatedAt().contentToHtml().exec()
   },
   // 浏览增加 $inc方法为mongodb中的相加,将pv值加上他后面的数字,可以加负数,还有$set,$unset,$push等方法
