@@ -20,7 +20,7 @@ app.use(session({
   name: config.session.key,
   secret: config.session.secret,
   resave: true,
-  saveUninitialized: false,
+  useUnifiedTopology: true,
   cookie: {
     maxAge: config.session.maxAge
   },
