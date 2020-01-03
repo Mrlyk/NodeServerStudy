@@ -22,9 +22,18 @@ module.exports = {
   create: function create (post) {
     return Post.create(post).exec()
   },
+  // 获取文章
   getPostById: (postId) => {
     // populate mongoose的填充查询,相当于关系数据库的连接查询,会根据path去指定的User中查询对应数据,author只能是几种(_id,sting,buffer,number等),推荐使用_id
     return Post.findOne({ _id: postId }).populate({ path: 'author', model: 'User' }).addCreatedAt().contentToHtml().exec()
+  },
+  // 获取未marked转码的原生文章来编辑
+  getRawPostById: (postId) => {
+    return Post.findOne({ _id: postId }).populate({ path: 'author', model: 'User' }).addCreatedAt().exec()
+  },
+  // 更新文章
+  updatePostById: (postId, data) => {
+    return Post.update({ _id: postId }, { $set: data }).exec()
   },
   // 按日期降序获取某个用户的所有文章
   getPosts: (author) => {
@@ -39,5 +48,9 @@ module.exports = {
   // 浏览增加 $inc方法为mongodb中的相加,将pv值加上他后面的数字,可以加负数,还有$set,$unset,$push等方法
   incPv: (postId) => {
     return Post.update({ _id: postId }, { $inc: { pv: 1 } }).exec()
+  },
+  // 删除文章
+  delPostById: (postId) => {
+    return Post.deleteOne({ _id: postId }).exec()
   }
 }
