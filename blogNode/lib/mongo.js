@@ -4,7 +4,7 @@ const moment = require('moment')
 const objectIdToTimestamp = require('objectid-to-timestamp')
 const mongolass = new Mongolass()
 
-mongolass.connect(config.mongodb.url, { useUnifiedTopology: true })
+mongolass.connect(config.mongodb.url, { useNewUrlParser: true })
 
 // 根据id生成创建时间,全局插件
 mongolass.plugin('addCreatedAt', {
@@ -44,3 +44,12 @@ exports.Post = mongolass.model('Post', {
 
 // 按创建时间降序查看用户的文章列表
 exports.Post.index({ author: 1, _id: -1 }).exec()
+
+// 创建留言
+exports.Comment = mongolass.model('Comment', {
+  author: { type: Mongolass.Types.ObjectId, required: true },
+  content: { type: 'string', required: true },
+  postId: { type: Mongolass.Types.ObjectId, required: true }
+})
+// 通过文章 id 获取该文章下所有留言，按留言创建时间升序
+exports.Comment.index({ postId: 1, _id: 1 }).exec()
