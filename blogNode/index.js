@@ -55,6 +55,13 @@ app.use(function (req, res, next) {
 
 routes(app)
 
+// 拦截路由跳转的错误信息
+app.use(function (err, req, res, next) {
+  console.error(err)
+  req.flash('error', err.message)
+  res.redirect('/posts')
+})
+
 app.listen(config.port, function () {
   console.log(`${pkg.name} listening on port ${config.port}`)
   console.log('http://localhost:3000')

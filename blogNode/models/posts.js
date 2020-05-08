@@ -13,7 +13,7 @@ Post.plugin('contentToHtml', {
     })
   },
   afterFindOne: (post) => {
-    if (post.content) {
+    if (post && post.content) {
       post.content = marked(post.content)
     }
     return post
